@@ -1,0 +1,1 @@
+<p><label>you've searched for {$search}</label></p>
