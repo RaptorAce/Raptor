@@ -1,3 +1,6 @@
+<div class="header">
+    <p>Header</p>
+</div>
 <div class="menu">
     <ul>
         {foreach from=$menu key="key" item="option"}
