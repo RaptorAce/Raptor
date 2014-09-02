@@ -25,7 +25,7 @@ class mainControl extends Control {
         
         $menu = array(
             array(
-                'href' => '/raptor/main/run',
+                'href' => '/raptor/Main/run',
                 'caption' => 'Abrir'
                 ),
         );

@@ -20,6 +20,7 @@ class core {
     
     public function execute() {
           $uri = $this->loadUrl();
+          $uri[0] = strtolower($uri[0]);
           define('CALL', $uri[0]);        
           if (count($uri)>1) {
             $module = $uri[0].'Control';
