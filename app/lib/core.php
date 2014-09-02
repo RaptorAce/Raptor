@@ -19,20 +19,27 @@ class core {
     }
     
     public function execute() {
-        $uri = $this->loadUrl();
-        
-        if (count($uri)>1) {
-            define('CALL', $uri[0]);
+          $uri = $this->loadUrl();
+          define('CALL', $uri[0]);        
+          if (count($uri)>1) {
             $module = $uri[0].'Control';
             $action = $uri[1];
-            $control = new $module;
-            $result = $control->$action();
+              if (method_exists($module,$action)){
+                 $control = new $module;
+                 $result = $control->$action();
+                 echo $result;
+                 exit;
+                }
+          }   
+        
+            require_once MAINDIR . '/mod/main/mainControl.php';
+            require_once MAINDIR . '/mod/main/mainView.php';
+            require_once MAINDIR . '/mod/main/mainModel.php';
+            $control = new mainControl;
+            $result = $control->home();
             echo $result;
             exit;
-        }   
-        
-        throw new Exception('Error: Invalid Request');
+//        throw new Exception('Error: Invalid Request');
     }
     
 }
-

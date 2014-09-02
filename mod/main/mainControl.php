@@ -42,10 +42,10 @@ class mainControl extends Control {
         $this->commitReplace($this->view->render(), '#center');
     }
     
-    public function search() {
+    public function tbl() {
         
-        $this->view->loadTemplate('main/search');
-        $this->view->setVariable('search', $this->getPost('teste'));
+        $this->view->loadTemplate('main/table');
+//        $this->view->setVariable('search', $this->getPost('teste'));
         $this->commitAdd($this->view->render(), '#run');
     }
             
