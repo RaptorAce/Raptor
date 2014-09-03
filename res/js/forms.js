@@ -15,7 +15,7 @@ Forms.prototype = {
                 Forms.Data = [];
                 //Forms.Data.push('formId='+$(this).attr('id'));
                 $(this).find('input[type="hidden"][name],input[type="text"][name],select[name],textarea[name]').each(function(e){
-                    Forms.Data.push($(this).attr('name')+'='+$(this).val());
+                    Forms.Data.push($(this).attr('name')+'='+encodeURIComponent($(this).val()));
                 });
                 $(this).find('input[type="password"]').each(function(e){
                     Forms.Data.push($(this).attr('name')+'='+md5($(this).val()));

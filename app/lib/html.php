@@ -26,11 +26,11 @@ class Html {
     #    return 'Html.Show(\'' . String::RemoveNewLines(String::AddSQSlashes($html)) . '\',\'' . $block . '\',\'' . $window . '\');';
     #}
 
-    public function ShowHtml($block) {
+    public static function ShowHtml($block) {
         return 'Html.Show(\''.$block.'\');';
     }
 
-    public function HideHtml($block) {
+    public static function HideHtml($block) {
         return 'Html.Hide(\''.$block.'\');';
     }
 
@@ -66,24 +66,6 @@ class Html {
             return true;
         }
         return false;
-    }
-
-    public static function UserData($info = false) {
-        $user = self::ReadSession(LEET_UID);
-        $data = $user['user'];
-        if ($info) {
-            return $data[$info];
-        }
-        return $data;
-    }
-
-    public static function CompanyData($info) {
-        $user = self::ReadSession(LEET_UID);
-        $data = $user['company'];
-        if ($info) {
-            return $data[$info];
-        }
-        return $data;
     }
 
 }

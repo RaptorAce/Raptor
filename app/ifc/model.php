@@ -1,5 +1,31 @@
 <?php
 
+/**
+ * Class Model
+ *
+ * Interface de manipulação de banco de dados
+ *
+ * As conexões ficam armazenadas no parâmetro $connections
+ *
+ * Para criar uma conexão a partir de arquivo, utiliza-se
+ * a função loadConnectionFile(), este acessará a pasta
+ * app/ifc/data e localizará um arquivo cujo nome é md5('nome_da_conexão')
+ *
+ * Para criar uma conexão a partir de dados dinâmicos, utilize a
+ * função createNewConnection()
+ *
+ * Os dados de conexão devem ser strings
+ * criptografadas utilizando o módulo dev, acessando:
+ *
+ * http://localhost/raptor/dev/opendevtools
+ *
+ * O ambiente de desenvolvimento funciona apenas se estiver
+ * definida a global ENVDEV em main.php. Para desativá-la,
+ * comente a linha que define a global
+ *
+ */
+
+define('MODELDIR', IFCDIR . '/data');
 
 class Model {
 
@@ -94,16 +120,6 @@ class Model {
     private $deletewhere = array();
 
     /**
-     * @var string
-     */
-    private $connection;
-
-    /**
-     * @var Db
-     */
-    private $cn;
-
-    /**
      * @var
      */
     private  $result;
@@ -118,10 +134,24 @@ class Model {
      */
     public $dataset = array();
 
+    /**
+     * @var string
+     */
+    private $connection = '';
+
+    /**
+     * @var array
+     */
+    private $connections = array();
+
 
     public function __construct($connection = 'connection1') {
-        $this->connection = $connection;
-        //$this->cn = new Db();
+        $this->loadConnectionFile($connection);
+        $this->setConnection($connection);
+    }
+
+    public function setConnection($name) {
+        $this->connection = $name;
     }
 
     /**
@@ -153,11 +183,102 @@ class Model {
     }
 
     /**
+     * Cria uma conexão à partir de um arquivo
+     * Os arquivos devem estar armazenados em
+     * app/ifc/data com nome md5('nome_da_conexão')
+     *
+     * Utilize o módulo dev para criar a string
+     * criptografada de conexão em:
+     *
+     * http://localhost/raptor/dev/opendevtools
+     *
+     * @param $name     - Nome da Conexão
+     */
+    public function LoadConnectionFile($name) {
+
+        $dataFile = MODELDIR . '/' . md5($name);
+        if (is_file($dataFile)) {
+            $data = file_get_contents($dataFile);
+            $this->createNewConnection($name, $data);
+        }
+    }
+
+    /**
+     * Cria uma conexão à partir da string criptografada
+     *
+     *
+     * @param $name     - Nome da Conexão
+     * @param $data     - String criptografada com os dados
+     */
+    public function createNewConnection($name, $data) {
+        $data = CR_::decrypt($data);
+        $json = json_decode($data, true);
+        if ($json) {
+            $this->connections[$name] = $json;
+        }
+    }
+
+    /**
+     * Efetua a conexão solicitada
+     *
+     * @param $name     - Nome da conexão já criada
+     */
+    private function connect($name) {
+        $this->connections[$name]['conn'] =
+            new PDO(
+                'mysql:host=' . $this->connections['host'] . ';dbname=' . $this->connections['db'],
+                $this->connections['user'],
+                $this->connections['pass']);
+    }
+
+    /**
+     * Monta o dataset em UTF-8
+     *
+     * @param $result       - Resultado da PDO Query
+     * @return array
+     */
+    private function Mount($result) {
+        $obj = array();
+        $row = 0;
+        while ($res = $result->fetchObject()) {
+            foreach ($res as $field => $value) {
+                $obj[$row][$field] = utf8_encode($value);
+            }
+            $row++;
+        }
+        return $obj;
+    }
+
+    /**
+     * Executa uma query
+     *
+     * @param $query                - Query string
+     * @param bool $setUtf8         - Executa SET NAMES 'utf-8' antes de executar a query (indicado para insert/update)
+     * @return array
+     */
+    private function Exec($query, $setUtf8 = false) {
+        $this->connect($this->connection);
+        if ($setUtf8) $this->connections[$this->connection]['conn']->prepare("SET NAMES 'utf8'")->execute();
+        $result = $this->connections[$this->connection]['conn']->prepare($query);
+        $result->execute();
+        $info = $result->errorInfo();
+        #if ($info[2] != '') {
+        #    ExceptionHandler::sqlFatalErrorHandler($query, $info[2]);
+        #}
+        if (is_bool($result)) {
+            return $result;
+        }
+        $dataset = $this->Mount($result);
+        if ($setUtf8) $this->connections[$this->connection]['conn']->prepare("SET NAMES 'latin1'")->execute();
+        return $dataset;
+    }
+
+    /**
      * Executa a query e guarda o
      * resultado na propriedade dataset
      */
     protected function runQuery() {
-        $this->dataset = $this->cn->Exec($this->GetQuery(), $this->connection);
+        $this->dataset = $this->Exec($this->GetQuery());
         $this->clearSelect();
     }
 
@@ -165,15 +286,15 @@ class Model {
      *
      */
     protected function runDelete() {
-        $this->result = $this->cn->Exec($this->getDeleteQuery(), $this->connection);
+        $this->result = $this->Exec($this->getDeleteQuery());
     }
 
     protected function runInsert($safe = true) {
-        $this->result = $this->cn->Exec($this->GetInsert($safe), $this->connection);
+        $this->result = $this->Exec($this->GetInsert($safe));
     }
 
     protected function runUpdate($safe = true) {
-        $this->result = $this->cn->Exec($this->getUpdateQuery($safe), $this->connection, true);
+        $this->result = $this->Exec($this->getUpdateQuery($safe), true);
     }
 
     protected function addField($field) {
