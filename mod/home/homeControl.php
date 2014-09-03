@@ -35,15 +35,7 @@ class homeControl extends Control {
         
         $content = new homeView();
         
-        $menu = array(
-            array(
-                'href' => '/raptor/home/run',
-                'caption' => 'Abrir'
-                ),
-        );
-        
         $content->loadTemplate('home/content');
-        $content->setVariable('menu', $menu);
         $this->view->setVariable('content', $content->render());
         $home = $this->view->loadHome();
         return $home;
