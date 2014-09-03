@@ -1,11 +1,3 @@
-/* 
- * leet.eti.br FORMS JS
- * 
- * Author: Elvis D'Andrea
- * E-mail: elvis@vistasoft.com.br
- * 
- */
-
 function Forms(){}
 
 Forms.prototype = {

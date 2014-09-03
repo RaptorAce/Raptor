@@ -1,1 +1,1 @@
-<p><label>you've searched for {$search}</label></p>
+<p><label>you've searched for</label></p>
