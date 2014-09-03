@@ -35,5 +35,17 @@ class Control {
         echo Html::AddHtml($html, $block);
         exit;
     }
+
+    protected function commitShow($block, $stay = false) {
+        echo Html::ShowHtml($block);
+        if (!$stay)
+            exit;
+    }
+
+    protected function commitHide($block, $stay = false) {
+        echo Html::HideHtml($block);
+        if (!$stay)
+            exit;
+    }
     
 }

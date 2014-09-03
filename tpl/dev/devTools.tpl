@@ -23,6 +23,14 @@
     <div id="result">
 
     </div>
+    <div id="createconn" style="display: none">
+        <form action="/raptor/dev/makefile">
+            <p><label>Create this connection</label></p>
+            <p><label>Name:</label><input type="text" name="connname"></p>
+            <input id="connstr" type="hidden" name="connstr" value="">
+            <input type="submit" value="Create">
+        </form>
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="/raptor/res/js/md5.js"></script>
@@ -32,4 +40,7 @@
 
 <script>
     Forms.Actions('#main');
+    $('#result').bind('DOMSubtreeModified', function(){
+        $('#connstr').val($('#result').text());
+    });
 </script>
