@@ -20,7 +20,6 @@ class core {
     
     public function execute() {
           $uri = $this->loadUrl();
-          $uri[0] = strtolower($uri[0]);
           define('CALL', $uri[0]);        
           if (count($uri)>1) {
             $module = $uri[0].'Control';
@@ -33,10 +32,10 @@ class core {
                 }
           }   
         
-            require_once MAINDIR . '/mod/main/mainControl.php';
-            require_once MAINDIR . '/mod/main/mainView.php';
-            require_once MAINDIR . '/mod/main/mainModel.php';
-            $control = new mainControl;
+            require_once MAINDIR . '/mod/home/homeControl.php';
+            require_once MAINDIR . '/mod/home/homeView.php';
+            require_once MAINDIR . '/mod/home/homeModel.php';
+            $control = new homeControl();
             $result = $control->home();
             echo $result;
             exit;

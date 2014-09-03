@@ -1,5 +1,5 @@
 <div id="run">
-    <form action="/raptor/Main/tbl">
+    <form action="/raptor/home/tbl">
         <p>
             <label>teste:</label>
             <select>

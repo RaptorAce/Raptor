@@ -1,50 +1,67 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Class mainControl
+ *
+ * Author: Eder D'Andrea
+ * e-mail: ederluizcorrea@gmail.com
  */
+class homeControl extends Control {
 
-
-
-class mainControl extends Control {
-    
+    /**
+     * @var homeModel
+     */
     private $model;
+
+    /**
+     * @var homeView
+     */
     private $view;
-    
+
+
     public function __construct() {
         parent::__construct();
-        $this->view = new mainView();
-        $this->model = new mainModel();
+        $this->view = new homeView();
+        $this->model = new homeModel();
     }
 
+    /**
+     * Função HOME - É chamada quando
+     * é acessado diretorio root
+     *
+     * @return string
+     */
     public function home() {
         
-        $content = new mainView();
+        $content = new homeView();
         
         $menu = array(
             array(
-                'href' => '/raptor/Main/run',
+                'href' => '/raptor/home/run',
                 'caption' => 'Abrir'
                 ),
         );
         
-        $content->loadTemplate('main/content');
+        $content->loadTemplate('home/content');
         $content->setVariable('menu', $menu);
         $this->view->setVariable('content', $content->render());
         $home = $this->view->loadHome();
         return $home;
     }
-    
+
+    /**
+     * Some specifications here
+     *
+     * @return
+     */
     public function run(){
-        $this->view->loadTemplate('main/run');
+        $this->view->loadTemplate('home/run');
         $this->commitReplace($this->view->render(), '#center');
     }
     
     public function tbl() {
         
-        $this->view->loadTemplate('main/table');
+        $this->view->loadTemplate('home/table');
 //        $this->view->setVariable('search', $this->getPost('teste'));
         $this->commitAdd($this->view->render(), '#run');
     }

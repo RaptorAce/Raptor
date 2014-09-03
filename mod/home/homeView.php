@@ -1,6 +1,6 @@
 <?php
 
-class mainView extends View {
+class homeView extends View {
 
     public function getTemplate() {
         
@@ -8,7 +8,7 @@ class mainView extends View {
     }
     
     public function loadHome() {
-        $this->loadTemplate('main/home');
+        $this->loadTemplate('home/home');
         return $this->render();
     }
     
