@@ -7,6 +7,8 @@ define('LIBDIR',APPDIR.'/lib');
 define('BASEDIR','/raptor/');
 define('TPLDIR', MAINDIR . '/tpl');
 
+define('ENVDEV', '1');
+
 register_shutdown_function('fatalErrorHandler');
 spl_autoload_register('autoLoad');
 
@@ -16,6 +18,7 @@ spl_autoload_register('autoLoad');
 include_once LIBDIR.'/core.php';
 include_once LIBDIR.'/html.php';
 include_once LIBDIR.'/string.php';
+include_once LIBDIR.'/cr.php';
 include_once LIBDIR.'/smarty/Smarty.class.php';
 
 function fatalErrorHandler(){
@@ -36,6 +39,7 @@ function autoLoad($class_name) {
     $file = $search . '/' . CALL . '/' . $class_name . '.php';
     if (file_exists($file)) {
         require_once $file;
+        return;
     }
 }
 
