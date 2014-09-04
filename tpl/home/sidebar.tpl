@@ -7,3 +7,10 @@
             <li><a href="#">Export</a></li>
         </div>
       </div>
+
+      <script>
+          $('ul.nav > li').click(function(){
+              $(this).parent('ul').find('li').removeClass('active');
+              $(this).addClass('active');
+          });
+      </script>
