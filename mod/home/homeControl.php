@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /**
  * Class mainControl
@@ -35,10 +35,19 @@ class homeControl extends Control {
         
         $content = new homeView();
         
-        $content->loadTemplate('home/content');
+        $content->loadTemplate('home/header');
+        $this->view->setVariable('header', $content->render());
+        $content->loadTemplate('home/sidebar');
+        $this->view->setVariable('sidebar', $content->render());
+        $content->loadTemplate('home/overview');
         $this->view->setVariable('content', $content->render());
         $home = $this->view->loadHome();
         return $home;
+    }
+
+    public function overview(){
+        $this->view->loadTemplate('home/overview');
+        $this->commitReplace($this->view->render(), '#center');
     }
 
     /**
@@ -46,8 +55,8 @@ class homeControl extends Control {
      *
      * @return
      */
-    public function run(){
-        $this->view->loadTemplate('home/run');
+    public function reports(){
+        $this->view->loadTemplate('home/reports');
         $this->commitReplace($this->view->render(), '#center');
     }
     
