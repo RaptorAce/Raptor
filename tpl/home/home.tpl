@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/raptor/res/css/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/raptor/res/css/main.css">
 <link rel="stylesheet" href="/raptor/res/js/jquery-ui/jquery-ui.css">
+<link rel="stylesheet" href="/raptor/res/js/chosen/chosen.css">
 <script type="text/javascript" src="/raptor/res/js/jquery-1.9.1.js"></script>
 </head>
 <body>
@@ -26,4 +27,5 @@
 <script type="text/javascript" src="/raptor/res/js/forms.js"></script>
 <script type="text/javascript" src="/raptor/res/js/main.js"></script>
 <script type="text/javascript" src="/raptor/res/js/jquery-ui/jquery-ui.js"></script>
+<script type="text/javascript" src="/raptor/res/js/chosen/chosen.jquery.js"></script>
 </html>

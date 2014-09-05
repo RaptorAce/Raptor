@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-09-05 01:20:49
+<?php /* Smarty version Smarty-3.1.18, created on 2014-09-05 04:23:47
          compiled from "C:\xampp\htdocs\Raptor\tpl\home\header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:32285408a2e4b31b25-12762664%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1909554091eb3d7ac83-79864009%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,15 +11,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '32285408a2e4b31b25-12762664',
+  'nocache_hash' => '1909554091eb3d7ac83-79864009',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.18',
-  'unifunc' => 'content_5408a2e4b7fd35_08026733',
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.18',
+  'unifunc' => 'content_54091eb3dde642_60063642',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5408a2e4b7fd35_08026733')) {function content_5408a2e4b7fd35_08026733($_smarty_tpl) {?>      <div class="container-fluid">
+<?php if ($_valid && !is_callable('content_54091eb3dde642_60063642')) {function content_54091eb3dde642_60063642($_smarty_tpl) {?>      <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
