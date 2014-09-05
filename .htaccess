@@ -1,8 +1,6 @@
 RewriteEngine on
 Options +FollowSymlinks
 
-RewriteBase /raptor
-
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule . - [L]

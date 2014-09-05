@@ -23,6 +23,8 @@ class homeControl extends Control {
         parent::__construct();
         $this->view = new homeView();
         $this->model = new homeModel();
+        $this->view->setVariable('cssdir', CSSDIR);
+        $this->view->setVariable('jsdir', JSDIR);
     }
 
     /**

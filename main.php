@@ -1,20 +1,25 @@
 <?php
 
+if (isset($_SERVER['HTTP_REFERER'])) {
+    define ('MAINURL', $_SERVER['HTTP_REFERER']);
+} else {
+    define ('MAINURL', 'http://' . $_SERVER['SERVER_NAME'] . '/' . $_SERVER['REDIRECT_URL']);
+}
+
 define('MAINDIR',__DIR__);
 define('APPDIR', MAINDIR.'/app');
 define('IFCDIR',APPDIR.'/ifc');
 define('LIBDIR',APPDIR.'/lib');
 define('BASEDIR','/raptor/');
 define('TPLDIR', MAINDIR . '/tpl');
+define('CSSDIR', MAINURL . '/res/css');
+define('JSDIR', MAINURL . '/res/js');
 
 define('ENVDEV', '1');
 
 register_shutdown_function('fatalErrorHandler');
 spl_autoload_register('autoLoad');
 
-/*
-* Edited!
-*/
 include_once LIBDIR.'/core.php';
 include_once LIBDIR.'/html.php';
 include_once LIBDIR.'/string.php';
