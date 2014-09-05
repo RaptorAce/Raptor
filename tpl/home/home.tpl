@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta name="title" content="Meu site">
+<Head>
+<meta content="text/html; charset=utf-8">
+<meta name="Raptor" content="Raptor Reporter">
 <link rel="stylesheet" href="/raptor/res/css/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="/raptor/res/css/main.css">
 <link rel="stylesheet" href="/raptor/res/js/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" href="/raptor/res/js/chosen/chosen.css">
 <script type="text/javascript" src="/raptor/res/js/jquery-1.9.1.js"></script>
-</head>
+</Head>
 <body>
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="header">
    {$header}
