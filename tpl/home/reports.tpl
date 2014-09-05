@@ -32,7 +32,7 @@
 </div>
 <script>
     Forms.Actions('#run');
-    $(".chosen-select").chosen({width: "95%"});
+    $(".chosen-select").chosen({ width: "95%" });
     $(function() {
         $( ".datepick" ).datepicker({ showButtonPanel: true, dateFormat: "yy-mm-dd"  });
     });

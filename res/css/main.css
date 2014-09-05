@@ -103,3 +103,7 @@ body {
   display: inline-block;
   border-radius: 50%;
 }
+
+div.chosen-container ul li input {
+    height: 25px !important;
+}
