@@ -5,10 +5,11 @@ class core {
     private function loadUrl(){
         
         $url = $_SERVER['REQUEST_URI'];
-        $uri = str_replace(BASEDIR,'', $url);
-        $uri = explode('/', $uri);
-        
-        return $uri;
+        #$uri = ltrim(str_replace(BASEDIR,'', $url),'/');
+        $uri = explode('/', $url);
+        $action = end($uri);
+        $module = prev($uri);
+        return array($module,$action);
         
     }
     
