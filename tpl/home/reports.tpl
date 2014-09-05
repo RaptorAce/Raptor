@@ -17,7 +17,6 @@
                 </div><!-- /input-group -->
             </div><!-- /.col-lg-6 -->
          </div>
-        <br>
          <div class="row">
             <div class="col-md-3 col-md-offset-4">
                 <div class="input-group">
@@ -33,6 +32,7 @@
 </div>
 <script>
     Forms.Actions('#run');
+    $(".chosen-select").chosen({width: "95%"});
     $(function() {
         $( ".datepick" ).datepicker({ showButtonPanel: true, dateFormat: "yy-mm-dd"  });
     });

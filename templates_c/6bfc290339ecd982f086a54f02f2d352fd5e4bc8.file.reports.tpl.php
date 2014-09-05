@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.18, created on 2014-09-05 04:24:45
+<?php /* Smarty version Smarty-3.1.18, created on 2014-09-05 04:27:05
          compiled from "C:\xampp\htdocs\Raptor\tpl\home\reports.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3102754091eb54d1fc7-47338347%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6bfc290339ecd982f086a54f02f2d352fd5e4bc8' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Raptor\\tpl\\home\\reports.tpl',
-      1 => 1409883880,
+      1 => 1409884021,
       2 => 'file',
     ),
   ),
@@ -55,6 +55,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 </div>
 <script>
     Forms.Actions('#run');
+    $(".chosen-select").chosen();
     $(function() {
         $( ".datepick" ).datepicker({ showButtonPanel: true, dateFormat: "yy-mm-dd"  });
     });
