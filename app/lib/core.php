@@ -7,7 +7,6 @@ class core {
         $url = $_SERVER['REQUEST_URI'];
         $uri = str_replace(BASEDIR,'', $url);
         $uri = explode('/', $uri);
-        
         return $uri;
         
     }

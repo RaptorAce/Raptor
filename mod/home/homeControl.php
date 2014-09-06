@@ -25,6 +25,8 @@ class homeControl extends Control {
         $this->model = new homeModel();
         $this->view->setVariable('cssdir', CSSDIR);
         $this->view->setVariable('jsdir', JSDIR);
+        $this->view->setVariable('basedir', BASEDIR);
+        
     }
 
     /**
