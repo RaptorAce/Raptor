@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 
 /*
  * Define as pastas principais
@@ -16,7 +16,6 @@ define('TPLDIR', MAINDIR . '/tpl');
  */
 
 $basedir = str_replace(basename(__FILE__),'', $_SERVER["PHP_SELF"]);
-
 define('BASEDIR',$basedir);
 
 /*

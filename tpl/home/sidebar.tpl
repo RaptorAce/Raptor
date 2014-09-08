@@ -1,6 +1,6 @@
 <ul class="nav nav-sidebar">
   <li class="active"><a href="{$basedir}home/overview">Overview</a></li>
-  <li><a href="{$jsdir}home/reports">Reports</a></li>
+  <li><a href="{$basedir}home/reports">Reports</a></li>
   <li><a href="#">Funcionário</a></li>
 <li><a href="#">Export</a></li>
 <script>

@@ -9,15 +9,18 @@
 class homeControl extends Control {
 
     /**
+     * Model Primario
+     * 
      * @var homeModel
      */
     private $model;
 
     /**
+     * View primaria
+     * 
      * @var homeView
      */
     private $view;
-
 
     public function __construct() {
         parent::__construct();
@@ -26,7 +29,6 @@ class homeControl extends Control {
         $this->view->setVariable('cssdir', CSSDIR);
         $this->view->setVariable('jsdir', JSDIR);
         $this->view->setVariable('basedir', BASEDIR);
-        
     }
 
     /**
@@ -36,15 +38,13 @@ class homeControl extends Control {
      * @return string
      */
     public function home() {
-        
-        $content = new homeView();
-        
-        $content->loadTemplate('home/header');
-        $this->view->setVariable('header', $content->render());
-        $content->loadTemplate('home/sidebar');
-        $this->view->setVariable('sidebar', $content->render());
-        $content->loadTemplate('home/overview');
-        $this->view->setVariable('content', $content->render());
+
+        $this->view->loadTemplate('home/header');
+        $this->view->setVariable('header', $this->view->render());
+        $this->view->loadTemplate('home/sidebar');
+        $this->view->setVariable('sidebar', $this->view->render());
+        $this->view->loadTemplate('home/overview');
+        $this->view->setVariable('content', $this->view->render());
         $home = $this->view->loadHome();
         return $home;
     }
@@ -55,19 +55,25 @@ class homeControl extends Control {
     }
 
     /**
-     * Some specifications here
+     * Modulo Reports
      *
-     * @return
+     * @return null
      */
     public function reports(){
         $this->view->loadTemplate('home/reports');
         $this->commitReplace($this->view->render(), '#center');
     }
     
+    /*
+     * Modulo tbl
+     * Retorna a tabela
+     * 
+     * @return null
+     */
+    
     public function tbl() {
         
         $this->view->loadTemplate('home/table');
-//        $this->view->setVariable('search', $this->getPost('teste'));
         $this->commitAdd($this->view->render(), '#run');
     }
             
