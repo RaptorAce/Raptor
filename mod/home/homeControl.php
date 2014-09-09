@@ -72,9 +72,14 @@ class homeControl extends Control {
      */
     
     public function tbl() {
-        
+
+	$pr = $this->getPost('teste');
+
+	$prt = explode(',', $pr);
+
+	$this->view->setVariable('res', $prt);
         $this->view->loadTemplate('home/table');
-        $this->commitAdd($this->view->render(), '#run');
+        $this->commitReplace($this->view->render(), '#table');
     }
             
     

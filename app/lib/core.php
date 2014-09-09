@@ -8,7 +8,7 @@ class core {
         $uri = str_replace(BASEDIR,'', $url);
         $uri = explode('/', $uri);
         return $uri;
-        
+
     }
     
     public function __construct() {

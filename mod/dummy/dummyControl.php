@@ -52,6 +52,5 @@ class dummyControl extends Control {
         $this->view->setVariable('search', $this->getPost('teste'));
         $this->commitAdd($this->view->render(), '#run');
     }
-            
-    
+
 }

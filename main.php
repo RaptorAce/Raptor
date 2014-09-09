@@ -15,8 +15,10 @@ define('TPLDIR', MAINDIR . '/tpl');
  * Define a pasta padrão para as URLs
  */
 
-$basedir = str_replace(basename(__FILE__),'', $_SERVER["PHP_SELF"]);
-define('BASEDIR',$basedir);
+//$basedir = str_replace(basename(__FILE__),'', $_SERVER["PHP_SELF"]);
+//define('BASEDIR',$basedir);
+
+define('BASEDIR','/raptor/');
 
 /*
  * Encontra a URL em que estamos trabalhando e define como MAINURL
