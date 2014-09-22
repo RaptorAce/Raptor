@@ -63,7 +63,7 @@ class homeControl extends Control {
         $this->view->loadTemplate('home/reports');
         $this->commitReplace($this->view->render(), '#center');
     }
-    
+
     /*
      * Modulo tbl
      * Retorna a tabela
@@ -73,14 +73,19 @@ class homeControl extends Control {
     
     public function tbl() {
 
-	$pr = $this->getPost('teste');
+	$pr = $this->getPost();
+        
+        if ($pr['func'] != 'null'){
+            $prt = explode(',', $pr['func']);
 
-	$prt = explode(',', $pr);
-
-	$this->view->setVariable('res', $prt);
-        $this->view->loadTemplate('home/table');
-        $this->commitReplace($this->view->render(), '#table');
+            $this->view->setVariable('res', $prt);
+            $this->view->setVariable('idt', $pr['idt']);
+            $this->view->setVariable('fdt', $pr['fdt']);
+            $this->view->loadTemplate('home/table');
+            $this->commitReplace($this->view->render(), '#table');
+        }
+        else{
+            $this->commitReplace('', '#table');
+        }
     }
-            
-    
 }

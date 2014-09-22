@@ -1,4 +1,4 @@
-﻿<table class="table table-striped table-bordered">
+<table class="table table-striped table-bordered">
  <thead>
   <tr>
     <th>Jill</th>
@@ -7,11 +7,12 @@
   </tr>
  </thead>
  <tbody>
-  <tr>
-    {foreach from=$prt item="row"}
-      <td></td>
-      <td></td>
-      <td></td>
-    {/foreach}
+  {foreach from=$res item="row"}
+    <tr>
+      <td>{$row}</td>
+      <td>{$idt}</td>
+      <td>{$fdt}</td>
+    </tr>
+  {/foreach}
  </tbody>
 </table>
