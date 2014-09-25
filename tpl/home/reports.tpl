@@ -64,7 +64,7 @@ Substituí a 'DIV' Center da home.tbl com o seu conteudo quando acessado
     Forms.Actions('#run');
     $(".chosen-select").chosen();
     $(function() {
-        $( ".datepick" ).datepicker({ 
+        $( ".datepick" ).datepicker({
             showButtonPanel: true,
             dateFormat: "yy-mm-dd"  });
     });

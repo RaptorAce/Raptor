@@ -77,11 +77,10 @@ body {
 }
 
 div.chosen-container ul li input {
-  height: 34px !important;
+  height: 30px !important;
 }
 
 .chosen-container .chosen-choices{
-    height: 34px !important;
     border-radius: 3px;
     border: 1px solid #CCCCCC;
 }

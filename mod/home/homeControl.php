@@ -24,6 +24,11 @@ class homeControl extends Control {
 
     public function __construct() {
         parent::__construct();
+        session_start();
+        if (!isset($_SESSION['access'])){
+            echo 'ACCESS DENIED';
+            exit;
+        }
         $this->view = new homeView();
         $this->model = new homeModel();
         $this->view->setVariable('cssdir', CSSDIR);
@@ -38,15 +43,8 @@ class homeControl extends Control {
      * @return string
      */
     public function home() {
-
-        $this->view->loadTemplate('home/header');
-        $this->view->setVariable('header', $this->view->render());
-        $this->view->loadTemplate('home/sidebar');
-        $this->view->setVariable('sidebar', $this->view->render());
-        $this->view->loadTemplate('home/overview');
-        $this->view->setVariable('content', $this->view->render());
-        $home = $this->view->loadHome();
-        return $home;
+            $home = $this->view->loadHome();
+            return $home;
     }
 
     public function overview(){
@@ -88,4 +86,21 @@ class homeControl extends Control {
             $this->commitReplace('', '#table');
         }
     }
+    
+    public function funcionario($para = ''){
+        
+        if ($para == ''){
+            $this->view->loadTemplate('home/funcionario');
+            $this->commitReplace($this->view->render(),'#center');
+        }
+        else {
+            $this->commitAdd($para, '#func');
+        }
+    }
+    
+    public function logout(){
+        session_destroy();
+        echo "location.href='http://localhost/raptor/login/home';";
+    }
+    
 }

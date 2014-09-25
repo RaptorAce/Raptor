@@ -13,12 +13,16 @@ Gera o Header, menu de cabeçalho
    </div>
 
 <!-- -----------Menu à direita------------- -->
-   <div class="navbar-collapse collapse">
+   <div id="headmenu" class="navbar-collapse collapse">
     <ul class="nav navbar-nav navbar-right">
      <li><a href="#">Settings</a></li>
      <li><a href="#">Ajuda</a></li>
-     <li><a href="#">Sair</a></li>
+     <li><a href="{$basedir}home/logout">Sair</a></li>
     </ul>
    </div>
 
 </div>
+    
+<script>
+    Html.Actions('#headmenu');
+</script>

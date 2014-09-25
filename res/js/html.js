@@ -37,15 +37,8 @@ Html.prototype = {
         if (id == undefined) id = 'html';
         $(id + ' a[href]:not(.boundAction), ' + id + ' button[href]:not(.boundAction)').click(function(a){
             $(this).addClass('boundAction');
-            if ($(this).attr('href') == '') {
-                return false;
-            }
             a.preventDefault();
-            var params = '';
-            if ($(this).attr('params') != undefined) {
-                params = 'params='+encodeURIComponent($(this).attr('params'));
-            }
-            Html.Post($(this).attr('href'), params, function(e){
+            Html.Post($(this).attr('href'),'',function(e){
                 eval(e);
                 return false;
             });

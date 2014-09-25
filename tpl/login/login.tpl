@@ -27,43 +27,34 @@ Todo o conteúdo do site, e também na troca de aba, são feito em html::replace
 <link rel="stylesheet" href="{$cssdir}/bootstrap/css/bootstrap.css">
 <link rel="stylesheet" href="{$jsdir}/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" href="{$jsdir}/chosen/chosen.css">
-<link rel="stylesheet" href="{$cssdir}/main.css">
+<link rel="stylesheet" href="{$cssdir}/login.css">
 
 <!-- ------------------JQuery--------------------- -->
 <script type="text/javascript" src="{$jsdir}/jquery-1.9.1.js"></script>
 
 <!-- ----------------HTML Script------------------ -->
 <script type="text/javascript" src="{$jsdir}/html.js"></script>
+<script type="text/javascript" src="{$jsdir}/login.js"></script>
+
 </Head>
 
 <body>
-<!-- ----------------Div da Header----------------- -->
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" id="header">
-   {$header}
-  </div>
-
-  <div class="container-fluid">
-    <div class="row" id="main">
-
-<!-- ----------------Div da Sidebar---------------- -->
-     <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
-      {$sidebar}
-     </div>
-
-<!-- ----------------Div central------------------- -->
-     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="center">
-      {$content}
-     </div>
-
-    </div>
+  <div class="container" id="login">
+     <form class="form-signin" action="logar">
+      <h2 class="form-signin-heading">Logar</h2>
+      <input class="form-control" type="text" name="user" placeholder="Usuario">
+      <input class="form-control" type="password" name="pass" placeholder="Senha">
+      <button type="submit" class="btn btn-primary btn-lg btn-block">Entrar</button>
+     </form>
+      <div class="result form-return"></div>
   </div>
 
 </body>
 
 <!-- ------------------JavaScripts----------------- -->
+
+<script>
+    Forms.Actions('#login');
+</script>
 <script type="text/javascript" src="{$jsdir}/md5.js"></script>
-<script type="text/javascript" src="{$jsdir}/forms.js"></script>
-<!-- <script type="text/javascript" src="{$jsdir}/main.js"></script> -->
-<script type="text/javascript" src="{$jsdir}/jquery-ui/jquery-ui.js"></script>
-<script type="text/javascript" src="{$jsdir}/chosen/chosen.jquery.js"></script>
 </html>

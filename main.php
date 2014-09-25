@@ -25,14 +25,14 @@ define('BASEDIR','/raptor/');
  * usado para chamar CSS e JS
  */
 
-if (isset($_SERVER['HTTP_REFERER'])) {
-    define ('MAINURL', $_SERVER['HTTP_REFERER']);
-} else {
-    define ('MAINURL', 'http://' . $_SERVER['SERVER_NAME'] . BASEDIR);
-}
+//if (isset($_SERVER['HTTP_REFERER'])) {
+//    define ('MAINURL', $_SERVER['HTTP_REFERER']);
+//} else {
+    define ('MAINURL', 'http://' . $_SERVER['HTTP_HOST'] . BASEDIR);
+//}
 
-define('CSSDIR', MAINURL . '/res/css');
-define('JSDIR', MAINURL . '/res/js');
+define('CSSDIR', MAINURL . 'res/css');
+define('JSDIR', MAINURL . 'res/js');
 
 define('ENVDEV', '1');
 

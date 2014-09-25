@@ -3,7 +3,7 @@
   <tr>
     <th>Jill</th>
     <th>Smith</th>
-    <th>50</th>
+    <th>Fluttershy</th>
   </tr>
  </thead>
  <tbody>
