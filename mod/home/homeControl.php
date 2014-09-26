@@ -22,18 +22,42 @@ class homeControl extends Control {
      */
     private $view;
 
+    /**
+     * Login Validate -
+     * Checa na session por um login com sucesso.
+     * retorna true em um login, do contrario retorna false
+     * 
+     * @return bool
+     */
+
+    protected function loginValidate(){
+        if(isset($_SESSION['access'])){
+            return ($_SESSION['access'] == 'ba8a48b0e34226a2992d871c65600a7c' ? true : false );
+        }
+        return false;
+    }
+
+    protected function postValidate(){
+        if ($_SERVER['REQUEST_METHOD'] != 'POST'){
+            header('location: ' . MAINURL . 'home/home');
+        }
+    }
+
     public function __construct() {
         parent::__construct();
         session_start();
-        if (!isset($_SESSION['access'])){
+        if ($this->loginValidate()){
+            $this->view = new homeView();
+            $this->model = new homeModel();
+            $this->view->setVariable('cssdir', CSSDIR);
+            $this->view->setVariable('jsdir', JSDIR);
+            $this->view->setVariable('basedir', BASEDIR);
+        }
+
+        else {
             echo 'ACCESS DENIED';
             exit;
         }
-        $this->view = new homeView();
-        $this->model = new homeModel();
-        $this->view->setVariable('cssdir', CSSDIR);
-        $this->view->setVariable('jsdir', JSDIR);
-        $this->view->setVariable('basedir', BASEDIR);
     }
 
     /**
@@ -48,6 +72,7 @@ class homeControl extends Control {
     }
 
     public function overview(){
+        $this->postValidate();
         $this->view->loadTemplate('home/overview');
         $this->commitReplace($this->view->render(), '#center');
     }
@@ -58,21 +83,23 @@ class homeControl extends Control {
      * @return null
      */
     public function reports(){
+        $this->postValidate();
         $this->view->loadTemplate('home/reports');
         $this->commitReplace($this->view->render(), '#center');
     }
 
-    /*
+    /**
      * Modulo tbl
      * Retorna a tabela
      * 
      * @return null
      */
-    
+
     public function tbl() {
+        $this->postValidate();
 
 	$pr = $this->getPost();
-        
+
         if ($pr['func'] != 'null'){
             $prt = explode(',', $pr['func']);
 
@@ -86,9 +113,10 @@ class homeControl extends Control {
             $this->commitReplace('', '#table');
         }
     }
-    
+
     public function funcionario($para = ''){
-        
+        $this->postValidate();
+
         if ($para == ''){
             $this->view->loadTemplate('home/funcionario');
             $this->commitReplace($this->view->render(),'#center');
@@ -97,10 +125,16 @@ class homeControl extends Control {
             $this->commitAdd($para, '#func');
         }
     }
-    
+
+    /**
+     * Metodo logout
+     * 
+     * Destroi a session e redireciona para a tela de login
+     */
+
     public function logout(){
         session_destroy();
-        echo "location.href='http://localhost/raptor/login/home';";
+        header('location: ' . MAINURL . 'login/home');
+        exit;
     }
-    
 }

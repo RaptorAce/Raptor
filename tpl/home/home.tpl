@@ -25,6 +25,7 @@ Todo o conteúdo do site, e também na troca de aba, são feito em html::replace
 
 <!-- -------------------CSS----------------------- -->
 <link rel="stylesheet" href="{$cssdir}/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="{$cssdir}/bootstrap/css/bootstrap-theme.css">
 <link rel="stylesheet" href="{$jsdir}/jquery-ui/jquery-ui.css">
 <link rel="stylesheet" href="{$jsdir}/chosen/chosen.css">
 <link rel="stylesheet" href="{$cssdir}/main.css">

@@ -22,7 +22,3 @@ Gera o Header, menu de cabeçalho
    </div>
 
 </div>
-    
-<script>
-    Html.Actions('#headmenu');
-</script>

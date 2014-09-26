@@ -31,6 +31,13 @@ define('BASEDIR','/raptor/');
     define ('MAINURL', 'http://' . $_SERVER['HTTP_HOST'] . BASEDIR);
 //}
 
+/*
+ * Define a Pagina padrão
+ * A pagina que será aberta quando não informado nenhum url
+ */
+    
+define('DFTPAGE', 'login');
+
 define('CSSDIR', MAINURL . 'res/css');
 define('JSDIR', MAINURL . 'res/js');
 

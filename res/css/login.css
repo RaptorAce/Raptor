@@ -4,20 +4,12 @@ body {
   background-color: #eee;
 }
 
-.form-return {
-  color: white;
+.result {
   display: none;
-  background-color: #b00000;
-  border-radius: 20px;
   text-align: center;
-  max-width: 330px;
-  padding: 15px;
+  max-width: 400px;
   margin: 0 auto;
-  font-size: 40px;
-}
-
-.vis {
-    display: block;
+  font-size: 20px;
 }
 
 .form-signin {

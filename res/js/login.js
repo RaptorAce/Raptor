@@ -30,8 +30,7 @@ Forms.prototype = {
                         if($.trim(msg) == '5aca0fe6e5321f9e6867582c1739c3e1'){
                             location.href = "http://localhost/raptor/home/home";
                         } else if ($.trim(msg) == 'boo'){
-                            $('.result').addClass('vis');
-                            $('.result').html('Login inválido');
+                            $('.result').show();
                         }
                         return false;
                     },

@@ -17,10 +17,20 @@ class core {
         include_once IFCDIR . '/view.php';
     }
 
+    protected function loadDefault(){
+        define('CALL', DFTPAGE);
+        if(method_exists(DFTPAGE . 'Control', 'home')){
+            $control = new loginControl();
+            $result = $control->home();
+            echo $result;
+            exit;
+        }
+    }
+
     public function execute() {
           $uri = $this->loadUrl();
-          define('CALL', $uri[0]);
           if (count($uri)>1) {
+            define('CALL', $uri[0]);
             $module = $uri[0].'Control';
             $action = $uri[1];
             $param = '';
@@ -29,22 +39,18 @@ class core {
                 $param = $uri[2];
             }
             
-              if (method_exists($module,$action)){
+            if (method_exists($module,$action)){
                  $control = new $module;
                  $result = $control->$action($param);
                  echo $result;
                  exit;
                 }
+                throw new Exception('Error: Invalid Request');
             }
 
-//            require_once MAINDIR . '/mod/home/homeControl.php';
-//            require_once MAINDIR . '/mod/home/homeView.php';
-//            require_once MAINDIR . '/mod/home/homeModel.php';
-//            $control = new homeControl();
-//            $result = $control->home();
-//            echo $result;
-//            exit;
-        throw new Exception('Error: Invalid Request');
+            $this->loadDefault();
+            
+//        throw new Exception('Error: Invalid Request');
     }
 
 }
